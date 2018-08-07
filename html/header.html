@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Knowledge Walker - Header</title>
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW,NOARCHIVE">
+</head>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<body bgcolor="#9aaaaaa" text="#eeeeee" link="#eeeeee" vlink="#eeeeee" alink="#eeeeee">
+<center><img src="../img/Logo.jpg" id="ExeButton" onClick="LinkOpen()" onMouseDown="this.src='../img/Logo_push.jpg'" onMouseUp="this.src='../img/Logo.jpg'" ></center>
+</body>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<script type="text/javascript" src="../js/GetLink.js"></script>
+<script type="text/javascript">
+// クリック時処理
+function LinkOpen()
+{
+	// デバッグ用(コードに文法的不正があると、ここに至らない)
+	//window.alert("Start");
+	
+	// ボタンを押下時画像に変更
+	//document.getElementById("ExeButton").src = "../img/Logo_push.jpg";
+	
+	// フッターのコンボボックスで選ばれているものを取得
+	var nComboIndex = parent.footer.document.ComboBox.Source.selectedIndex;
+
+	// 最下の項目"Full Random"が選ばれている場合
+	if(nComboIndex == 12 )
+	{
+		// 0～1.0の乱数をN倍した後、小数点以下を切り捨てて、0～Nの乱数を得る
+		nComboIndex = Math.floor( Math.random() * nComboIndex )
+	}
+
+	// フッターのコンボボックスの値によって分岐
+	switch (nComboIndex)
+	{
+		case 0:
+			parent.main.location.href = "http://ja.wikipedia.org/wiki/Special:Randompage";
+			break;
+		case 1:
+			parent.main.location.href = "http://en.wikipedia.org/wiki/Special:Randompage";
+			break;
+		case 2:
+			parent.main.location.href = "http://acidable.tumblr.com/random";
+			break;
+		case 3:
+			parent.main.location.href = "http://ja.uncyclopedia.info/wiki/Special:Randompage";
+			break;
+		case 4:
+			parent.main.location.href = "http://en.uncyclopedia.co/wiki/Special:Randompage";
+			break;
+		case 5:
+			parent.main.location.href = GetArXivLink();
+			break;
+		case 6:
+			// 食べログはフレーム内に開くことが出来ないので、新しいウィンドウを開く
+			//parent.main.location.href = GetTabelogLink();
+			window.open(GetTabelogLink());
+			break;
+		case 7:
+			// クックパッドはフレーム内に開くことが出来ないので、新しいウィンドウを開く
+			//parent.main.location.href = GetCockPadLink();
+			window.open(GetCockPadLink());
+			break;
+		case 8:
+			parent.main.location.href = 'main_NewsPapers.html';
+			break;
+		case 9:
+			parent.main.location.href = 'main_2chMatome.html';
+			break;
+		case 10:
+			parent.main.location.href = 'main_Vice.html';
+			break;
+		case 11:
+			parent.main.location.href = 'main_EdiReco.html';
+			break;
+		default:
+			window.alert("不正な入力: nComboIndex=" + nComboIndex);
+			break;
+	}
+}
+</script>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+</html>

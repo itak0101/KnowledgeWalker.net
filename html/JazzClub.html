@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>情報板(JazzClub)</title>
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW,NOARCHIVE">
+</head>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<body bgcolor="#00008B" text="#878787" link="#878787" vlink="#878787" alink="#878787">
+	<br>
+	<center>
+		<font color="#eeeeee" size="5" ><div id="timeLine">情報板(JazzClub)</div></font>
+		<br>
+		<br>
+		<div id="ContentsTable"></div>
+	</center>
+</body>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../js/FileIO.js"></script>
+<script type="text/javascript" src="../js/UtilRSS.js"></script>
+
+
+<!-- ドライバ -->
+<script type="text/javascript">
+
+	// Static変数
+	var idx = 0;
+	
+	// RSSリスト(CSV)を読み込んで配列に格納
+	var arrURL = [];
+	arrURL = ReadCSV("../RSS/RSS_JazzClub.csv");
+	
+	// feedの読み込み & バージョン指定
+	google.load("feeds", "1");
+	
+	// タイマー処理
+	setInterval( "UpdateTimeLine()", 1000);
+	setInterval( "initialize()", 300000);
+
+</script>
+
+
+<!-- 時刻表示部分 -->
+<script type="text/javascript">
+
+	myWeek=new Array("日","月","火","水","木","金","土");
+
+	function UpdateTimeLine()
+	{
+		myDate=new Date();
+		myMsg = myDate.getFullYear() + "年";
+		myMsg += ( myDate.getMonth() + 1 ) + "月";
+		myMsg += myDate.getDate() + "日";
+		myMsg += "(" + myWeek[myDate.getDay()] +  ")";
+		myMsg += " ";
+		myMsg += myDate.getHours() + "時";
+		myMsg += myDate.getMinutes() + "分";
+		myMsg += myDate.getSeconds() + "秒";
+		document.getElementById("timeLine").innerHTML = myMsg;
+	}
+
+</script>
+
+
+<!-- コンテンツ表示部分 -->
+<script type="text/javascript">
+	
+	
+	function initialize()
+	{
+		// RSSリストからランダムに一つ取得
+		var nIdxURL = Math.floor( Math.random() * arrURL.length);
+		var xmlUrl = arrURL[nIdxURL][0];
+		if(0==idx){idx = 5;}else{idx=0}
+
+		// フィード情報の取得
+		var feed = new google.feeds.Feed(xmlUrl);	// 指定されたURLにあるXMLから
+		feed.setNumEntries(10);						// 指定された個数のフィード情報を取得
+		
+		// フィード情報の整形
+		var html = '<table width="60%">';
+		feed.load(function(result)
+		{
+			if (!result.error)
+			{
+				var container = document.getElementById("feed");
+				//for (var i = idx/2; i < result.feed.entries.length; i++) {
+				for (var i = idx; i < idx+5; i++)
+				{
+					var entry = result.feed.entries[i];
+					var title = entry.title;
+					var link = entry.link;
+					var author = entry.author;
+					var description = entry.content;
+					html += '<tr><td bgcolor="#e6e6fa"><b>' + '<a href="' + link + '" style="text-decoration:none">' + title + '</a></b><br><font size="3">' + description + '<br><br><div Align="right">' + arrURL[nIdxURL][1] + '</div><br></font></td></tr>';
+				}
+				
+				html += '<tr><td bgcolor="#00008B"><font size="1" color="#eeeeee"><div Align="right">Coded by <a href="mailto:info@knowledgewalker.net?subject=壁掛け情報板に関する問い合わせ" style="text-decoration:none">T.Inoue</a></div></font></td></tr>'
+				html += '</table>';
+				document.getElementById("ContentsTable").innerHTML = html;
+			}
+		});
+	}
+	google.setOnLoadCallback(initialize);
+	
+</script>
+
+<!-- ---------------------------------------------------------------------------------- -->
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Knowledge Walker - Main</title>
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW,NOARCHIVE">
+</head>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<body text="#777777">
+
+</body>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../js/FileIO.js"></script>
+<script type="text/javascript" src="../js/UtilRSS.js"></script>
+<script type="text/javascript">
+
+//// feedの読み込み & バージョン指定 ////
+google.load("feeds", "1");
+
+//// RSSアドレス格納配列を定義 (AtoZ、あ～ん) ////
+var arrURL = [];
+
+//// 外部CSVファイルからRSSのアドレスを読み込み ////
+arrURL = ReadCSV("../RSS/RSS_Vice.csv");
+
+//// RSSフィードの取得と表示 ////
+google.setOnLoadCallback(GetRSSAndShow);
+
+</script>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+</html>

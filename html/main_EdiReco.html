@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Knowledge Walker - Main</title>
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW,NOARCHIVE">
+</head>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<body text="#777777">
+
+</body>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../js/FileIO.js"></script>
+<script type="text/javascript" src="../js/UtilRSS.js"></script>
+<script type="text/javascript">
+
+//// URL格納配列を定義 (AtoZ、あ～ん) ////
+var arrURL = [];
+
+//// 外部CSVファイルからURLを読み込み ////
+arrURL = ReadCSV("../RSS/URL_EdiReco.csv");
+
+//// URLをランダムに選択して表示 ////
+var nIdxURL = Math.floor( Math.random() * arrURL.length);
+document.location.href = arrURL[nIdxURL][0];
+
+</script>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+</html>

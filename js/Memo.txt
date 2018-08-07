@@ -1,0 +1,134 @@
+
+window.alert("入力: nIndex=" + nIndex);
+document.location.href = "http://ja.wikipedia.org/wiki/Special:Randompage";
+---------------------------------------------------------------
+テンプレート集
+---------------------------------------------------------------
+■リンクタグ
+<a href="Links.html" target="main" style="text-decoration:none;">Links</a>
+
+■テーブルタグ
+<table border="0"><tr><td></td></tr></table>
+
+■画像貼り付け
+<img src="">
+
+■改行
+<br>
+
+■普通のテキスト文書の様に掛けるようにする
+<pre></pre>
+
+■フレーム表示 (※bodyの代わりに記述)
+<frameset rows="55,*,30" frameborder = 0>
+  <frame src="html/menu.html" name="menu">
+  <frame src="html/top.html" name="main">
+  <frame src="html/footer.html" name="fotter">
+</frameset>
+
+---------------------------------------------------------------
+
+	feed.load(function (result){
+		if (!result.error){
+			for (var i = 0; i < result.feed.entries.length; i++) {
+				var entry = result.feed.entries[i];
+				var title = '<li><h3><a href="' + entry.link + '">' + entry.title + '</a></h3></li>';
+				var conte = '<li>' + entry.contentSnippet + '</li>';
+				var dates = '<li>' + entry.publishedDate + '</li>';
+				$('#feed').append('<li class="post"><ul>' + title + conte + dates + '</ul></li>');
+			}
+		}
+	});
+
+|---------------|---------------|
+|プロパティ		|概要			|
+|---------------|---------------|
+|title			|タイトル		|
+|link			|URL			|
+|content		|本文			|
+|contentSnippet	|概要			|
+|publishedDate	|日付			|
+|categories[]	|カテゴリー		|
+|-------------------------------|
+
+arrURL.push("http://rss.asahi.com/rss/asahi/newsheadlines.rdf"+ "?" + (new Date()).getTime() );
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../js/utilRSS.js"></script>
+<script type="text/javascript">
+
+//// feedの読み込み & バージョン指定 ////
+google.load("feeds", "1");
+
+//// RSSアドレス格納配列を定義 (AtoZ、あ～ん) ////
+var arrURL = [];
+arrURL.push("http://blog.livedoor.jp/chihhylove/index.rdf");// あじゃじゃしたー
+arrURL.push("http://alfalfalfa.com/index.rdf");				// アルファルファモザイク
+arrURL.push("http://blog.livedoor.jp/dqnplus/index.rdf");	// 痛いニュース
+arrURL.push("http://vipsister23.com/index.rdf");			// 妹はVIPPER
+arrURL.push("http://chaos2ch.com/atom.xml");				// カオスちゃんねる
+arrURL.push("http://www.scienceplus2ch.com/atom.xml");		// (*ﾟ∀ﾟ)ゞカガクニュース隊
+arrURL.push("http://gahalog.2chblog.jp/atom.xml");			// ガハろぐNews
+arrURL.push("http://blog.livedoor.jp/kinisoku/index.rdf");	// キニ速
+arrURL.push("http://blog.livedoor.jp/jyoushiki43/atom.xml");// 常識的に考えた
+arrURL.push("http://suiseisekisuisui.blog107.fc2.com/?xml");// すくいぬ
+arrURL.push("http://yutori2ch.blog67.fc2.com/?xml");		// (´A｀)＜咳をしてもゆとり
+//arrURL.push("http://damage0.blomaga.jp/index.rdf")			// ダメージ0
+arrURL.push("http://turusokuhou.com/?xml");					// ツル速報VIP
+arrURL.push("http://blog.livedoor.jp/nwknews/atom.xml");	// 哲学ニュースnwk
+arrURL.push("http://nyankobiyori.com/index.rdf");			// にゃんこびより
+arrURL.push("http://news020.blog13.fc2.com/?xml");			// ニュース2ちゃんねる
+arrURL.push("http://newtou.info/rss.xml");					// ニュー投
+arrURL.push("http://workingnews.blog117.fc2.com/?xml");		// 働くモノニュース : 人生VIP職人ブログwww
+arrURL.push("http://hamusoku.com/index.rdf");				// ハム速
+arrURL.push("http://blog.livedoor.jp/himasoku123/atom.xml");// 暇人速報
+arrURL.push("http://matometanews.com/index.rdf");			// まとめたニュース
+arrURL.push("http://totalmatomedia.blog.fc2.com/?xml")		// まとめでぃあ
+arrURL.push("http://mamesoku.com/index.rdf");				// まめ速
+arrURL.push("http://lifehack2ch.livedoor.biz/atom.xml");	// ライフハックちゃんねる弐式
+arrURL.push("http://rajic.ldblog.jp/index.rdf");			// ラジック
+arrURL.push("http://hypernews.2chblog.jp/atom.xml");		// Hyper News 2ch
+arrURL.push("http://blog.livedoor.jp/news23vip/atom.xml");	// VIPPERな俺
+arrURL.push("http://news.2chblog.jp/index.rdf");			// 2chコピペ情報局
+
+//// RSSフィードの取得と表示 ////
+google.setOnLoadCallback(GetRSSAndShow);
+
+</script>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="../js/UtilRSS.js"></script>
+<script type="text/javascript">
+
+//// feedの読み込み & バージョン指定 ////
+google.load("feeds", "1");
+
+//// RSSアドレス格納配列を定義 (AtoZ、あ～ん) ////
+var arrURL = [];
+arrURL.push("http://rss.asahi.com/rss/asahi/newsheadlines.rdf");		// 〇朝日新聞 (朝日新聞デジタル速報全ジャンルの最新ニュース)
+arrURL.push("http://www.agara.co.jp/index.rdf");						// 〇紀伊民報
+arrURL.push("http://rss.rssad.jp/rss/saga/local_news.xml");				// 〇佐賀新聞
+arrURL.push("http://sankei.jp.msn.com/rss/news/points.xml");			// 〇産経新聞 (注目ニュース)
+arrURL.push("http://rss.shikoku-np.co.jp/rss/flash.aspx");				// 〇四国新聞（速報）
+//arrURL.push("http://www.shizuokaonline.com/rss/shizuokaonline.xml");	// △静岡新聞
+arrURL.push("http://rss.rssad.jp/rss/shinmai/index_ad.xml");			// 〇信濃毎日新聞
+arrURL.push("http://www.daily-tohoku.co.jp/rss/d_rss.rdf");				// デーリー東北新聞社
+arrURL.push("http://zou3.xrea.jp/rss/tokyo2rss.php");					// 〇東京新聞
+arrURL.push("http://www.nagano-np.co.jp/modules/whatsnew/rss.php");		// 〇長野日報
+arrURL.push("http://373news.com/rss.php");								// 〇南日本新聞
+arrURL.push("http://www.nikkan.co.jp/rss/nksrdf.rdf");					// 〇日刊工業新聞
+arrURL.push("http://www.zou3.net/php/rss/nikkei2rss.php?head=main");	// 〇日経新聞
+arrURL.push("http://www.hokkaido-np.co.jp/rss/index.rdf");				// 〇北海道新聞
+arrURL.push("http://mainichi.jp/rss/etc/flash.rss");					// 〇毎日新聞 (毎日新聞の全ジャンル最新ニュース２０本)
+//arrURL.push("http://rss.yomiuri.co.jp/rss/yol/latestnews30");			// △読売新聞 (トップ＆主要ニュース)
+arrURL.push("http://yamagata-np.jp/news/rss/index.xml");				// 〇山形新聞(県内ニュース)
+arrURL.push("http://rss.ryukyushimpo.jp/rss/ryukyushimpo/index.rdf"); 	// 〇琉球新報（最新）
+
+//// RSSフィードの取得と表示 ////
+google.setOnLoadCallback(GetRSSAndShow);
+
+</script>

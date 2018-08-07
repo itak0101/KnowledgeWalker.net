@@ -1,0 +1,77 @@
+/* RSS_Music.css */
+body {
+	width:100%;
+	margin:0;
+	padding:0;
+	color:#666;
+	font-family:Century Gothic, Arial, sans-serif;
+	line-height: 18px;
+	background: url(../img/tile_xy.gif) repeat;
+}
+header {
+	width: 600px;
+	margin: 0px auto;
+	padding: 30px;
+	color: #FFF;
+	// Mozilla系ブラウザでの背景指定
+	background:#009;
+	background: -moz-linear-gradient(left, rgba(0,153,255,0.5), #009);
+	background: -webkit-linear-gradient(left, rgba(0,153,255,0.5), #009);
+	// Webkit系ブラウザでの背景指定
+	background: linear-gradient(to right, rgba(0,153,255,0.5), #009);
+	
+	// Mozilla系ブラウザでの背景指定
+	//background: -moz-linear-gradient(top, #ff9, #9c0);
+	//background: -webkit-linear-gradient(top, #ff9, #9c0);
+	
+	// Webkit系ブラウザでの背景指定（方向は省略＿デフォルトの to bottom になる)
+	//background: linear-gradient(#FF9, #9C0);
+}
+h1 {
+	line-height: 1em;
+	font-size: 200%;
+}
+#container {
+	width: 600px;
+	margin: 0px auto;
+	padding: 30px;
+	background: #FFF;
+	border: 1px solid #000;
+}
+header, article, footer, aside, time ,nav { display: block; }
+pre {
+	font-size: 82%;
+	color: #93BAF5;
+	margin-bottom: 2em;
+	width: 400px;
+}
+footer {
+	width: 660px;
+	margin: 0px auto;
+	color: #FFF;
+	text-align: center;
+	padding: 10px 0px;
+	background: #000;
+	border: 1px solid #000;
+	font: bold 80%/1em Arial, Helvetica, sans-serif;
+}
+
+/* color */
+.red{
+	color: #F99;
+}
+.green{
+	color: #6C9;
+}
+/* font size */
+span {
+	font-size: 80%;
+}
+/* link */
+a {
+	color: #F90;
+	text-decoration: underline;
+}
+a:hover {
+	color: #F00;
+}
